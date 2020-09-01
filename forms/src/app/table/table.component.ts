@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'forms-table',
@@ -7,10 +7,18 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableComponent implements OnInit {
+  @Input() selected;
+  @Input() items: [] = [];
+
+  @Output() selectItem = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSelectItem(item) {
+    this.selectItem.emit(item);
   }
 
 }
