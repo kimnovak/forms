@@ -7,11 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './common/button/button.component';
 
 import './../scss/index.scss';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonComponent
+    ButtonComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,

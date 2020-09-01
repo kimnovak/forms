@@ -6,7 +6,15 @@
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
+  background-color: transparent;
+  border-radius: $base-separator;
+  border: 1px solid #c3c3c3;
+  padding: rem(2 * $base-separator) rem(4 * $base-separator);
   font-size: rem(14px);
+  &:active:focus, &:active, &:focus {
+      border: 1px solid #a3a3a3;
+      outline-color: #a3a3a3;
+  }
   &__icon {
     margin-right: rem($base-separator);
     svg {

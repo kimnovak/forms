@@ -1,3 +1,4 @@
+@import "variables/index.scss";
 @function rem($target, $context: $base-size) {
   @return ($target / $context) * 1em;
 }

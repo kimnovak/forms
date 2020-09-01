@@ -9,6 +9,5 @@ import { Component, ViewEncapsulation } from '@angular/core';
 export class AppComponent {
   title = 'forms';
 
-  onActionPerformed(event) {
-  }
+
 }
