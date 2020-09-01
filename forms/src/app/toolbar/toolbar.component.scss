@@ -1,0 +1,8 @@
+@import "functions/index.scss";
+
+.toolbar {
+  display: flex;
+  .button {
+    margin: rem($base-separator * 2);
+  }
+}
