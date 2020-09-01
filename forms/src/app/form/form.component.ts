@@ -10,6 +10,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@
 export class FormComponent implements OnInit {
 
   label: string = 'Test Label'
+  type: string = "text"
 
   constructor() { }
 
