@@ -9,13 +9,15 @@ import { ButtonComponent } from './common/button/button.component';
 import './../scss/index.scss';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TableComponent } from './table/table.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonComponent,
     ToolbarComponent,
-    TableComponent
+    TableComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

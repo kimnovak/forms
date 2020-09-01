@@ -1,0 +1,29 @@
+@import 'functions/index.scss';
+@import 'variables/index.scss';
+
+.form-section {
+  margin-top: rem($base-separator * 6);
+  form {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__controls {
+    .button {
+      margin-bottom: rem($base-separator * 3);
+    }
+  }
+
+  &__input-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    label {
+      margin-right: rem($base-separator * 3);
+      margin-left: rem($base-separator * 3);
+    }
+    > div {
+      margin-bottom: rem($base-separator * 3);
+    }
+  }
+}
