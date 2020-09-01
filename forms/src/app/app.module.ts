@@ -8,12 +8,14 @@ import { ButtonComponent } from './common/button/button.component';
 
 import './../scss/index.scss';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,

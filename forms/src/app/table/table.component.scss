@@ -1,0 +1,11 @@
+@import "variables/index.scss";
+@import "functions/index.scss";
+
+.table {
+  background-color: #fafafa;
+  td, th {
+    min-width: 200px;
+    border: 1px solid #c3c3c3;
+    padding: rem($base-separator * 2) rem($base-separator * 4);
+  }
+}
