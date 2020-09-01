@@ -1,0 +1,17 @@
+@import "variables/index.scss";
+@import "functions/index.scss";
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: rem(14px);
+  &__icon {
+    margin-right: rem($base-separator);
+    svg {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

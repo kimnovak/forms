@@ -24,8 +24,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/scss/index.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/scss"
+              ]
+          },
             "scripts": []
           },
           "configurations": {
@@ -119,6 +124,13 @@
           }
         }
       }
-    }},
-  "defaultProject": "forms"
+    }
+  },
+  "defaultProject": "forms",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss",
+      "changeDetection": "OnPush"
+    }
+  }
 }
