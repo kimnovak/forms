@@ -1,20 +1,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th>
-        Test
-      </th>
-      <th>
-        Test
-      </th>
-      <th>
-        Test
-      </th>
-      <th>
-        Test
-      </th>
-      <th>
-        Test
+      <th *ngFor="let column of columns">
+        {{column.label}}
       </th>
     </tr>
   </thead>
@@ -24,8 +12,8 @@
       [class]="{'table__row--selected': item.id === selected.id}"
       (click)="onSelectItem(item)"
     >
-      <td>
-        Test 1
+      <td *ngFor="let column of columns">
+        {{item[column.accessor]}}
       </td>
     </tr>
   </tbody>

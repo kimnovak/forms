@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'forms-form',
@@ -8,7 +8,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@
   encapsulation: ViewEncapsulation.None
 })
 export class FormComponent implements OnInit {
-
+  @Input() mode;
   label: string = 'Test Label'
   type: string = "text"
 

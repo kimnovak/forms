@@ -1,5 +1,12 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 
+export enum Mode {
+  ADD,
+  EDIT,
+  REMOVE,
+  SEARCH
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,24 +15,53 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{
   selected = null;
+  metaData = {
+    columns: [
+      {
+        label: "First Name",
+        accessor: "firstName",
+        type: "string"
+      },
+      {
+        label: "Last Name",
+        accessor: "lastName",
+        type: "string"
+      },
+      {
+        label: "Address",
+        accessor: "address",
+        type: "string"
+      }
+    ]
+  }
   items = [
     {
       id: 1,
-      label: "Test label"
+      firstName: "Petar Petrovic",
+      address: "Adresa",
+      email: "petar@petrovic.petar"
     },
     {
       id: 2,
-      label: "Test label"
+      firstName: "Petar Petrovic",
+      address: "Adresa",
+      email: "petar@petrovic.petar"
     },
     {
       id: 3,
-      label: "Test label"
+      firstName: "Petar Petrovic",
+      address: "Adresa",
+      email: "petar@petrovic.petar"
     },
     {
       id: 4,
-      label: "Test label"
+      firstName: "Petar Petrovic",
+      address: "Adresa",
+      email: "petar@petrovic.petar"
     }
   ]
+
+  mode = Mode.EDIT;
 
   ngOnInit() {
     this.selected = this.items?.[1]
@@ -35,5 +71,7 @@ export class AppComponent implements OnInit{
     this.selected = item;
   }
 
-
+  onSelectMode(mode) {
+    this.mode = mode;
+  }
 }
