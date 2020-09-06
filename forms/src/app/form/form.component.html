@@ -1,22 +1,11 @@
 <div class="form-section">
   <form>
     <div class="form-section__input-container">
-      <div>
-        <label>{{label}}</label>
-        <input [type]="type" />
+      <div *ngFor="let column of columns">
+        <label>{{column.label}}</label>
+        <input [type]="column.type" id="column.accessor" [value]="proxy[column.accessor]" (change)="proxy[column.accessor] = $event.target.value" />
       </div>
-      <div>
-        <label>{{label}}</label>
-        <input [type]="type" />
-      </div>
-      <div>
-        <label>{{label}}</label>
-        <input [type]="type" />
-      </div>
-      <div>
-        <label>{{label}}</label>
-        <input [type]="type" />
-      </div>
+
     </div>
     <div class="form-section__controls">
       <forms-button icon="commit" label="commit"></forms-button>

@@ -38,25 +38,25 @@ export class AppComponent implements OnInit{
     {
       id: 1,
       firstName: "Petar Petrovic",
-      address: "Adresa",
+      address: "Adresa 1",
       email: "petar@petrovic.petar"
     },
     {
       id: 2,
-      firstName: "Petar Petrovic",
-      address: "Adresa",
+      firstName: "Njegos Petrovic",
+      address: "Adresa 2",
       email: "petar@petrovic.petar"
     },
     {
       id: 3,
       firstName: "Petar Petrovic",
-      address: "Adresa",
+      address: "Adresa 3",
       email: "petar@petrovic.petar"
     },
     {
       id: 4,
       firstName: "Petar Petrovic",
-      address: "Adresa",
+      address: "Adresa 4",
       email: "petar@petrovic.petar"
     }
   ]
