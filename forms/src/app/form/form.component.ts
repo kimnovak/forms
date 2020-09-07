@@ -38,13 +38,14 @@ export class FormComponent implements OnInit, OnChanges {
     }
     if (changes.mode) {
       this.mode = changes?.mode?.currentValue;
+      this.updateProxy(this.selected);
     }
   }
 
   updateProxy(selected) {
     const tempProxy = {};
     this.accessors.forEach((accessor: string) => {
-      tempProxy[accessor] = Mode.EDIT ? selected[accessor] || '' : null;
+      tempProxy[accessor] = this.mode === Mode.ADD ? null : selected[accessor] || '';
     })
     this.proxy = tempProxy;
   }
