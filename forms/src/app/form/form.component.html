@@ -1,5 +1,5 @@
 <div class="form-section">
-  <form>
+  <form (onSubmit)="onFormSubmit($event)">
     <div class="form-section__input-container">
       <div *ngFor="let column of columns">
         <label>{{column.label}}</label>
@@ -8,8 +8,8 @@
 
     </div>
     <div class="form-section__controls">
-      <forms-button icon="commit" label="commit"></forms-button>
-      <forms-button icon="cancel" label="Rollback"></forms-button>
+      <forms-button (click)="onSubmit()" icon="commit" label="commit"></forms-button>
+      <forms-button icon="cancel" label="Cancel" (click)="onCancel()"></forms-button>
     </div>
   </form>
 </div>

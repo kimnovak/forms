@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Mode } from '../app.component';
 
 @Component({
@@ -17,6 +17,9 @@ export class FormComponent implements OnInit, OnChanges {
   columns = [];
   accessors = []
   proxy = {}
+  emptyProxy = {}
+  @Output() commitAction = new EventEmitter();
+  @Output() cancelAction = new EventEmitter();
 
   constructor() { }
 
@@ -24,10 +27,18 @@ export class FormComponent implements OnInit, OnChanges {
     this.columns = this.metaData?.columns;
     this.accessors = this.metaData?.columns.map((column) => column.accessor);
     this.updateProxy(this.selected)
+    Object.keys(this.proxy).forEach(key => {
+      this.emptyProxy[key] = '';
+    })
   }
 
   ngOnChanges(changes): void {
-    this.updateProxy(changes.selected.currentValue)
+    if (changes.selected) {
+      this.updateProxy(changes.selected.currentValue)
+    }
+    if (changes.mode) {
+      this.mode = changes?.mode?.currentValue;
+    }
   }
 
   updateProxy(selected) {
@@ -36,5 +47,28 @@ export class FormComponent implements OnInit, OnChanges {
       tempProxy[accessor] = Mode.EDIT ? selected[accessor] || '' : null;
     })
     this.proxy = tempProxy;
+  }
+
+  onSubmit() {
+    this.commitAction.emit(this.proxy);
+  }
+
+  onCancel() {
+    if (this.mode === Mode.EDIT) {
+      this.proxy = this.selected;
+    }
+    if (this.mode === Mode.ADD) {
+      console.log(this.emptyProxy)
+      this.proxy = { ...this.emptyProxy }
+    }
+    if (this.mode === Mode.SEARCH) {
+      this.proxy = { ...this.emptyProxy }
+      //TODO: reset items
+      this.cancelAction.emit();
+    }
+  }
+
+  onFormSubmit(event) {
+    event.preventDefault();
   }
 }
