@@ -64,7 +64,6 @@ export class FormComponent implements OnInit, OnChanges {
     }
     if (this.mode === Mode.SEARCH) {
       this.proxy = { ...this.emptyProxy }
-      //TODO: reset items
       this.cancelAction.emit();
     }
   }

@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, Input } from '@angular/core';
 import { ValueTransformer } from '@angular/compiler/src/util';
 
 export enum Mode {
@@ -66,6 +66,12 @@ export class AppComponent implements OnInit{
 
   mode = Mode.EDIT;
 
+  @Input() onAdd = (item) => {console.log({add: item})}
+
+  @Input() onEdit = (item) => {console.log({edit: item})}
+
+  @Input() onRemove = (item) => {console.log({remove: item})}
+
   ngOnInit() {
     this.selected = this.items?.[1]
     this.unfilteredItems = this.items;
@@ -82,6 +88,12 @@ export class AppComponent implements OnInit{
   onActionCommitted(value) {
     if(this.mode === Mode.SEARCH) {
       this.items = this.items.filter((item) => Object.keys(value).some(key => item[key]?.includes(value[key])))
+    } else if(this.mode === Mode.ADD) {
+      this.onAdd(value);
+    } else if( this.mode === Mode.EDIT) {
+      this.onEdit(value);
+    } else if(this.mode === Mode.REMOVE) {
+      this.onRemove(value?.id);
     }
   }
 
