@@ -9,6 +9,25 @@ import {StandardFormsComponent} from 'standard-forms'
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit{
+
+  data = {
+    metaData: {
+      columns: [
+        {
+          label: 'Kolona 1',
+          type: 'string',
+          accessor: 'first'
+        }
+      ]
+    },
+    results: [
+      {
+        id: 1,
+        first: 'hello'
+      }
+    ]
+  }
+
   ngOnInit() {
 
   }

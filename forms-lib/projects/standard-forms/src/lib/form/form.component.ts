@@ -25,7 +25,7 @@ export class FormComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.columns = this.metaData?.columns;
-    this.accessors = this.metaData?.columns.map((column) => column.accessor);
+    this.accessors = this.metaData?.columns.map((column) => column?.accessor);
     this.updateProxy(this.selected)
     Object.keys(this.proxy).forEach(key => {
       this.emptyProxy[key] = '';
@@ -45,7 +45,7 @@ export class FormComponent implements OnInit, OnChanges {
   updateProxy(selected) {
     const tempProxy = {};
     this.accessors.forEach((accessor: string) => {
-      tempProxy[accessor] = this.mode === Mode.ADD ? null : selected[accessor] || '';
+      tempProxy[accessor] = this.mode === Mode.ADD ? null : selected?.[accessor] || '';
     })
     this.proxy = tempProxy;
   }

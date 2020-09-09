@@ -23,14 +23,6 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/scss/index.scss"
-            ],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/scss"
-              ]
-          },
             "scripts": []
           },
           "configurations": {

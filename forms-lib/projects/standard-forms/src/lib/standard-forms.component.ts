@@ -17,55 +17,14 @@ export enum Mode {
 })
 export class StandardFormsComponent implements OnInit {
   selected = null;
-  metaData = {
-    columns: [
-      {
-        label: "First Name",
-        accessor: "firstName",
-        type: "string"
-      },
-      {
-        label: "Last Name",
-        accessor: "lastName",
-        type: "string"
-      },
-      {
-        label: "Address",
-        accessor: "address",
-        type: "string"
-      }
-    ]
-  }
-  items = [
-    {
-      id: 1,
-      firstName: "Petar Petrovic",
-      address: "Adresa 1",
-      email: "petar@petrovic.petar"
-    },
-    {
-      id: 2,
-      firstName: "Njegos Petrovic",
-      address: "Adresa 2",
-      email: "petar@petrovic.petar"
-    },
-    {
-      id: 3,
-      firstName: "Petar Petrovic",
-      address: "Adresa 3",
-      email: "petar@petrovic.petar"
-    },
-    {
-      id: 4,
-      firstName: "Petar Petrovic",
-      address: "Adresa 4",
-      email: "petar@petrovic.petar"
-    }
-  ]
+  metaData;
+  items;
 
   unfilteredItems = [];
 
   mode = Mode.EDIT;
+
+  @Input() data;
 
   @Input() onAdd = (item) => { console.log({ add: item }) }
 
@@ -74,7 +33,9 @@ export class StandardFormsComponent implements OnInit {
   @Input() onRemove = (item) => { console.log({ remove: item }) }
 
   ngOnInit() {
-    this.selected = this.items?.[1]
+    this.metaData = this.data?.metaData;
+    this.items = this.data?.results;
+    this.selected = this.items?.[0]
     this.unfilteredItems = this.items;
   }
 
