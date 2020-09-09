@@ -1,0 +1,3 @@
+<forms-toolbar [mode]="mode" (selectMode)="onSelectMode($event)" [selected]="selected" [items]="items" (selectItem)="onSelectItem($event)"></forms-toolbar>
+<forms-table [metaData]="metaData" [selected]="selected" [items]="items" (selectItem)="onSelectItem($event)"></forms-table>
+<forms-form  [metaData]="metaData" [selected]="selected" [mode]="mode" (commitAction)="onActionCommitted($event)" (cancelAction)="onActionCanceled($event)"></forms-form>

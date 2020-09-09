@@ -10,19 +10,17 @@ import './../scss/index.scss';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TableComponent } from './table/table.component';
 import { FormComponent } from './form/form.component';
+import {StandardFormsModule} from 'standard-forms'
 
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonComponent,
-    ToolbarComponent,
-    TableComponent,
-    FormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AngularSvgIconModule.forRoot()
+    AngularSvgIconModule.forRoot(),
+    StandardFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

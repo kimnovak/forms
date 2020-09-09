@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { Mode } from '../app.component';
+import { Mode } from '../standard-forms.component';
 
 @Component({
   selector: 'forms-form',

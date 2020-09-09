@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, Output, EventEmitter, Input } from '@angular/core';
 
 import {ArrayUtilsService} from './../array-utils.service';
-import { Mode } from '../app.component';
+import { Mode } from '../standard-forms.component';
 
 @Component({
   selector: 'forms-toolbar',
