@@ -51,7 +51,18 @@ export class FormComponent implements OnInit, OnChanges {
   }
 
   onSubmit() {
-    this.commitAction.emit(this.proxy);
+    let submitData = {};
+    if(this.mode === Mode.ADD || this.mode === Mode.SEARCH) {
+      submitData = this.proxy;
+    } else if (this.mode === Mode.EDIT) {
+      submitData = {
+        ...this.selected,
+        ...this.proxy
+      }
+    } else if(this.mode === Mode.REMOVE) {
+      submitData = this.selected;
+    }
+    this.commitAction.emit(submitData);
   }
 
   onCancel() {
