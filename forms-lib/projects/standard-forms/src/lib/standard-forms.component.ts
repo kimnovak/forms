@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 
 export enum Mode {
@@ -15,7 +15,8 @@ export enum Mode {
   styles: [
   ]
 })
-export class StandardFormsComponent implements OnInit {
+export class StandardFormsComponent implements OnInit, OnChanges {
+
   selected = null;
   metaData;
   items;
@@ -37,6 +38,16 @@ export class StandardFormsComponent implements OnInit {
     this.items = this.data?.results;
     this.selected = this.items?.[0]
     this.unfilteredItems = this.items;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes.data) {
+      this.data = changes.data.currentValue;
+      this.metaData = this.data?.metaData;
+      this.items = this.data.results;
+      this.selected = this.items?.[0]
+      this.unfilteredItems = this.items;
+    }
   }
 
   onSelectItem(item) {

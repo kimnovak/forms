@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output, SimpleChange, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'forms-table',
@@ -6,7 +6,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output
   styleUrls: ['./table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnChanges {
   @Input() selected;
   @Input() items: [] = [];
   @Input() metaData;
@@ -16,8 +16,19 @@ export class TableComponent implements OnInit {
 
   constructor() { }
 
+
   ngOnInit(): void {
     this.columns = this.metaData?.columns
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes.items) {
+      this.items = changes.items.currentValue;
+    }
+    if(changes.metaData) {
+      this.metaData = changes.metaData.currentValue;
+      this.columns = this.metaData?.columns;
+    }
   }
 
   onSelectItem(item) {

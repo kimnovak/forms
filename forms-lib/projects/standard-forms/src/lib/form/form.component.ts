@@ -33,6 +33,14 @@ export class FormComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes): void {
+    if(changes.metaData) {
+      this.metaData = changes.metaData.currentValue;
+      this.columns = this.metaData?.columns;
+      this.accessors = this.metaData?.columns.map((column) => column?.accessor);
+      Object.keys(this.proxy).forEach(key => {
+        this.emptyProxy[key] = '';
+      })
+    }
     if (changes.selected) {
       this.updateProxy(changes.selected.currentValue)
     }
@@ -44,7 +52,7 @@ export class FormComponent implements OnInit, OnChanges {
 
   updateProxy(selected) {
     const tempProxy = {};
-    this.accessors.forEach((accessor: string) => {
+    this.accessors?.forEach((accessor: string) => {
       tempProxy[accessor] = this.mode === Mode.ADD ? null : selected?.[accessor] || '';
     })
     this.proxy = tempProxy;
