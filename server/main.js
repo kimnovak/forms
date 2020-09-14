@@ -83,7 +83,7 @@ app.get('/users', function (req, res) {
 });
 
 app.post('/users', function (req, res) {
-   users.results.push(req.body.data);
+   users.results.push({...req.body.data, id: users.results.length + 1});
    res.send(JSON.stringify(req.body.data));
 });
 

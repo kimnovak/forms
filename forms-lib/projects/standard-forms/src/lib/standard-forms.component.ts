@@ -45,7 +45,7 @@ export class StandardFormsComponent implements OnInit, OnChanges {
       this.data = changes.data.currentValue;
       this.metaData = this.data?.metaData;
       this.items = changes.data.currentValue.results;
-      this.selected = this.items?.[0]
+      this.selected = this.selected || this.items?.[0]
       this.unfilteredItems = this.items;
     }
   }
@@ -60,7 +60,8 @@ export class StandardFormsComponent implements OnInit, OnChanges {
 
   onActionCommitted(value) {
     if (this.mode === Mode.SEARCH) {
-      this.items = this.items.filter((item) => Object.keys(value).some(key => item[key]?.includes(value[key])))
+      console.log({ value })
+      this.items = this.items.filter((item) => Object.keys(value).some(key => { if (!value[key]) return false; return String(item[key])?.includes(String(value[key])) }))
     } else if (this.mode === Mode.ADD) {
       this.add.emit(value);
     } else if (this.mode === Mode.EDIT) {

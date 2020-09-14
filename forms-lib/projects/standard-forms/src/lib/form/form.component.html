@@ -3,7 +3,7 @@
     <div class="form-section__input-container">
       <div *ngFor="let column of columns">
         <label>{{column.label}}</label>
-        <input [type]="column.type" id="column.accessor" [value]="proxy[column.accessor]" (change)="proxy[column.accessor] = $event.target.value" />
+        <input [type]="column.type" id="column.accessor" [value]="proxy[column.accessor] || ''" (change)="proxy[column.accessor] = $event.target.value" />
       </div>
 
     </div>

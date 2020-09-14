@@ -13,7 +13,7 @@
       (click)="onSelectItem(item)"
     >
       <td *ngFor="let column of columns">
-        {{item[column.accessor]}}
+        {{item[column.accessor] || ''}}
       </td>
     </tr>
   </tbody>
