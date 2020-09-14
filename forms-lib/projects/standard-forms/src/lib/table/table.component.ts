@@ -24,7 +24,6 @@ export class TableComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if(changes.items) {
       this.items = changes.items.currentValue;
-      console.log({items: changes.items.currentValue})
     }
     if(changes.metaData) {
       this.metaData = changes.metaData.currentValue;

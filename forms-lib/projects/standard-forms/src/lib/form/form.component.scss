@@ -16,7 +16,7 @@
 
   &__input-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: wrap;
     label {
       margin-right: rem($base-separator * 3);

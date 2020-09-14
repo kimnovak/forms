@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, SimpleChange, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { UsersService } from './../users.service';
 import { StandardFormsComponent } from 'standard-forms'
 
@@ -8,20 +8,15 @@ import { StandardFormsComponent } from 'standard-forms'
   styleUrls: ['./users.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UsersComponent implements OnInit, OnChanges {
+export class UsersComponent implements OnInit {
   users = [];
   constructor(private usersService: UsersService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.usersService.getAll()
     .subscribe((data: any) => {
-      console.log({ data })
       this.users = data
     });
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log({changes})
   }
 
 

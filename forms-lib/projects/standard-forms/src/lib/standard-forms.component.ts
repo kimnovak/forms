@@ -41,7 +41,6 @@ export class StandardFormsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log({st: changes.data})
     if (changes.data) {
       this.data = changes.data.currentValue;
       this.metaData = this.data?.metaData;

@@ -22,29 +22,62 @@ let users = {
             label: 'First Name',
             accessor: 'firstName',
 
+         },
+         {
+            label: 'Last Name',
+            accessor: 'lastName',
+         },
+         {
+            label: 'Email',
+            accessor: 'email',
+         },
+         {
+            label: 'Phone Number',
+            accessor: 'phoneNumber',
+         },
+         {
+            label: 'Address',
+            accessor: 'address',
          }
       ]
    },
    results: [
       {
          id: 1,
-         firstName: 'Example',
-         lastName: 'User',
-         email: 'example@euser.us',
-         phoneNumber: '+3815555555',
+         firstName: 'Petar',
+         lastName: 'Petrovic',
+         email: 'petrovic@petar.pt',
+         phoneNumber: '+381210525',
+         address: 'Simple Street 1'
       },
       {
          id: 2,
-         firstName: 'Example 2',
-         lastName: 'User 2',
-         email: 'example2@euser2.us',
-         phoneNumber: '+3812222222',
+         firstName: 'Jovan',
+         lastName: 'Jovanovic',
+         email: 'test@example.ex',
+         phoneNumber: '+3812225227',
+         address: 'Avenue 2'
+      },
+      {
+         id: 3,
+         firstName: 'Marko',
+         lastName: 'Jovanovic',
+         email: 'test@example.ex',
+         phoneNumber: '+3812225227',
+         address: 'Avenue 3'
+      },
+      {
+         id: 4,
+         firstName: 'Gorana',
+         lastName: 'Filipovic',
+         email: 'gorana@filipovic.ex',
+         phoneNumber: '+3814242583',
+         address: 'Example Street 5'
       }
    ]
 }
 
 app.get('/users', function (req, res) {
-   console.log({ users })
    data = JSON.stringify(users);
    res.send(data)
 });
@@ -61,7 +94,6 @@ app.put('/users', function (req, res) {
 });
 
 app.delete('/users', function (req, res) {
-   console.log(req.query.id)
    const newUsers = users.results.filter((item) => item.id !== parseInt(req.query.id))
    users.results = newUsers
    res.send();

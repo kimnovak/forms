@@ -78,7 +78,6 @@ export class FormComponent implements OnInit, OnChanges {
       this.proxy = this.selected;
     }
     if (this.mode === Mode.ADD) {
-      console.log(this.emptyProxy)
       this.proxy = { ...this.emptyProxy }
     }
     if (this.mode === Mode.SEARCH) {
