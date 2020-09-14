@@ -8,18 +8,22 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class UsersService {
   endpoint = 'http://localhost:8081/users';
-  options: {
-    headers?: HttpHeaders | {[header: string]: string | string[]},
-    observe?: 'body' | 'events' | 'response',
-    params?: HttpParams|{[param: string]: string | string[]},
-    reportProgress?: boolean,
-    responseType?: 'arraybuffer'|'blob'|'json'|'text',
-    withCredentials?: boolean,
-  }
 
   constructor(private http: HttpClient) { }
 
   getAll() {
     return this.http.get(this.endpoint);
+  }
+
+  add(value) {
+    return this.http.post(this.endpoint, {data: value});
+  }
+
+  update(value) {
+    return this.http.put(this.endpoint, {data: value});
+  }
+
+  remove(id) {
+    return this.http.delete(this.endpoint, {params: {id}});
   }
 }

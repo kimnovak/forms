@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 
 
 export enum Mode {
@@ -27,11 +27,11 @@ export class StandardFormsComponent implements OnInit, OnChanges {
 
   @Input() data;
 
-  @Input() onAdd = (item) => { console.log({ add: item }) }
+  @Output() add = new EventEmitter();
 
-  @Input() onEdit = (item) => { console.log({ edit: item }) }
+  @Output() edit = new EventEmitter();
 
-  @Input() onRemove = (item) => { console.log({ remove: item }) }
+  @Output() remove = new EventEmitter();
 
   ngOnInit() {
     this.metaData = this.data?.metaData;
@@ -41,10 +41,11 @@ export class StandardFormsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes.data) {
+    console.log({st: changes.data})
+    if (changes.data) {
       this.data = changes.data.currentValue;
       this.metaData = this.data?.metaData;
-      this.items = this.data.results;
+      this.items = changes.data.currentValue.results;
       this.selected = this.items?.[0]
       this.unfilteredItems = this.items;
     }
@@ -62,11 +63,11 @@ export class StandardFormsComponent implements OnInit, OnChanges {
     if (this.mode === Mode.SEARCH) {
       this.items = this.items.filter((item) => Object.keys(value).some(key => item[key]?.includes(value[key])))
     } else if (this.mode === Mode.ADD) {
-      this.onAdd(value);
+      this.add.emit(value);
     } else if (this.mode === Mode.EDIT) {
-      this.onEdit(value);
+      this.edit.emit(value);
     } else if (this.mode === Mode.REMOVE) {
-      this.onRemove(value?.id);
+      this.remove.emit(value?.id);
     }
   }
 
